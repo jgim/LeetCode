@@ -4,7 +4,9 @@ class Solution:
 		low, high = 0, lens
 		while low <= high:
 			mid = (low + high) // 2
-			if nums[low] == nums[high] or nums[low] < nums[high]:
+			if nums[low] == nums[high]:
+				return nums[low]
+			if nums[low] < nums[high]:
 				return nums[low]
 			if nums[low] > nums[mid]:
 				high = mid
