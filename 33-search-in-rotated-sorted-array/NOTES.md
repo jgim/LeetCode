@@ -1,9 +1,20 @@
+if not nums:
+return -1
+if nums[0] < nums[lens - 1]:
+if nums[0] > target or nums[lens - 1] < target:
+return -1
+return binary_search(0, lens - 1)
+case 2.
 class Solution:
 def search(self, nums: List[int], target: int) -> int:
 def binary_search(low, high):
 mid = (low + high) // 2
 if nums[mid] == target:
 return mid
+elif nums[low] == target:
+return low
+elif nums[high] == target:
+return high
 if high - low <= 0:
 return -1
 if nums[low] < nums[mid]:
@@ -25,3 +36,4 @@ if nums[0] < nums[lens - 1]:
 if nums[0] > target or nums[lens - 1] < target:
 return -1
 return binary_search(0, lens - 1)
+case 3.
