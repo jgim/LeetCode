@@ -1,17 +1,10 @@
 class Solution:
 	def isValid(self, s: str) -> bool:
-		stack = []
+		stack, dictionary = [],{'{':'}', '[':']', '(':')'}
 		for i in s:
-			print (i)
-			if i in ['{', '[', '(']:
+			if i in dictionary:
 				stack.append(i)
-			elif len(stack) <= 0:
-				return False
-			elif i == '}' and stack.pop() != '{':
-				return False
-			elif i == ']' and stack.pop() != '[':
-				return False
-			elif i == ')' and stack.pop() != '(':
+			elif len(stack) == 0 or i != dictionary[stack.pop()]:
 				return False
 		return len(stack) == 0
 
