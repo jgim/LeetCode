@@ -6,6 +6,4 @@ class Solution:
 				stack.append(i)
 			elif len(stack) == 0 or i != dictionary[stack.pop()]:
 				return False
-		if len(stack) != 0:
-			return False
-		return True
+		return len(stack) == 0
