@@ -1,18 +1,13 @@
 class Solution:
-	def generateParenthesis(self, n: int) -> List[str]:
-		if not n:
-			return []
-		left, right, answer = n, n, []
-		self.dfs(left, right, answer, "")
-		return answer
-
-	def dfs(self, left, right, answer, string):
-		if right < left:
-			return
-		if not left and not right:
-			answer.append(string)
-			return
-		if left:
-			self.dfs(left - 1, right, answer, string+"(")
-		if right:
-			self.dfs(left, right - 1, answer, string+")")
+	def generateParenthesis(self, n):
+		result = []
+		string = [("(", n - 1, n)]
+		while string:
+			brakets, left, right = string.pop()
+			if left - right > 0 or left < 0 or right < 0:
+				continue
+			if left == 0 and right == 0:
+				result.append(brakets)
+			string.append((brakets + "(", left - 1, right))
+			string.append((brakets + ")", left, right - 1))
+		return result
