@@ -1,18 +1,12 @@
 class Solution:
 	def isAnagram(self, s: str, t: str) -> bool:
-		dictionary = {}
-		if len(s) != len(t):
-			return False
+		dictionary1, dictionary2 = {}, {}
 		for i in s:
-			if i not in dictionary:
-				dictionary[i] = 1
-			else:
-				dictionary[i] += 1
+			if i not in dictionary1:
+				dictionary1[i] = 1
+			dictionary1[i] += 1
 		for i in t:
-			if i not in dictionary:
-				return False
-			else:
-				dictionary[i] -= 1
-				if dictionary[i] < 0:
-					return False
-		return True
+			if i not in dictionary2:
+				dictionary2[i] = 1
+			dictionary2[i] += 1
+		return dictionary1 == dictionary2
